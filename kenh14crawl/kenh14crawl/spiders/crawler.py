@@ -2,6 +2,7 @@ import scrapy
 from bs4 import BeautifulSoup
 
 class CrawlerSpider(scrapy.Spider):
+
     name = 'crawler'
     root_site = "https://kenh14.vn/"
     allowed_domains = 'kenh14.vn'
@@ -13,7 +14,7 @@ class CrawlerSpider(scrapy.Spider):
     def parse(self, response,**kwargs):
 
         news_id = response.url[-21:-4]
-        response_content = response.content
+        response_content = response.body
         soup = BeautifulSoup(response_content,"html.parser")
 
         try:
@@ -29,7 +30,7 @@ class CrawlerSpider(scrapy.Spider):
         except:
             sapo=None   
         try:
-            news_content = ' '.join(response.xpath('//*[@id="k14-detail-content"]/div[2]/div/div/div[1]/div[2]/div[6]/p//text()'))
+            news_content = ' '.join(response.xpath('//*[@id="k14-detail-content"]/div[2]/div/div/div[1]/div[2]/div[6]/p//text()')).strip()
         except:
             news_content=None   
         try:      
@@ -43,7 +44,7 @@ class CrawlerSpider(scrapy.Spider):
         item['subtopic'] = subtopic
         item['title'] = title
         item['sapo'] = sapo
-        item['content'] = news_content.strip()
+        item['news_content'] = news_content
         item['url'] = response.url
 
 
@@ -55,21 +56,3 @@ class Kenh14Item(scrapy.Item):
     sapo = scrapy.Field()
     news_content = scrapy.Field()
     url = scrapy.Field()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
