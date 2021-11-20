@@ -6,6 +6,7 @@ class CrawlerSpider(scrapy.Spider):
     name = 'crawler'
     root_site = "https://kenh14.vn/"
     allowed_domains = 'kenh14.vn'
+    custom_settings = {'CLOSESPIDER_PAGECOUNT': 5}
     with open('/content/kenh14_beta_links.txt', 'r') as f:
         start_urls = f.read().split("\n")
         start_urls.pop()
@@ -30,7 +31,7 @@ class CrawlerSpider(scrapy.Spider):
         except:
             sapo=None   
         try:
-            news_content = ' '.join(response.xpath('//*[@id="k14-detail-content"]/div[2]/div/div/div[1]/div[2]/div[6]/p//text()')).strip()
+            news_content = ' '.join(response.xpath('//*[@id="k14-detail-content"]/div[2]/div/div/div[1]/div[2]/div[6]/p//text()').getall()).strip()
         except:
             news_content=None   
         try:      
