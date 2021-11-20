@@ -46,7 +46,7 @@ class CrawlerSpider(scrapy.Spider):
         item['sapo'] = sapo
         item['news_content'] = news_content
         item['url'] = response.url
-
+        return item
 
 class Kenh14Item(scrapy.Item):
     news_id = scrapy.Field()
