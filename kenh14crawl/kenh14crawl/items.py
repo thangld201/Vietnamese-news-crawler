@@ -20,3 +20,6 @@ class Kenh14Item(scrapy.Item):
     sapo = scrapy.Field()
     news_content = scrapy.Field()
     url = scrapy.Field()
+    
+class Kenh14Link(scrapy.Item):
+    link = scrapy.Field()
