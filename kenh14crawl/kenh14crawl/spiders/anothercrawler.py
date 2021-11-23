@@ -53,7 +53,7 @@ class AnothercrawlerSpider_2019(CrawlSpider):
     name = 'anothercrawler_2019'
     allowed_domains = ['kenh14.vn']
 
-    start_urls=['https://kenh14.vn/clip-660-giay-diem-lai-het-nhung-su-kien-noi-bat-nhat-nam-2019-20191223233829707.chn']
+    start_urls=['https://kenh14.vn/cac-idol-tiet-lo-cong-ty-cua-ho-quy-dinh-nhu-the-nao-ve-chuyen-hen-ho-cua-ga-nha-20190102165633746.chn']
         
     base_urls = 'http://kenh14.vn/'
 
