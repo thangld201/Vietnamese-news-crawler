@@ -1,6 +1,7 @@
 import scrapy
 from bs4 import BeautifulSoup
 
+# Content crawler
 class CrawlerSpider(scrapy.Spider):
 
     name = 'crawler'
