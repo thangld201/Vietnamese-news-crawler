@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
 
+# Another link crawler
 class AnothercrawlerSpider(CrawlSpider):
     name = 'anothercrawler_2021'
     allowed_domains = ['kenh14.vn']
