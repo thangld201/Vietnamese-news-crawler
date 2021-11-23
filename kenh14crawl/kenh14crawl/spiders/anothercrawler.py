@@ -5,7 +5,8 @@ from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
 
 # Another link crawler
-class AnothercrawlerSpider(CrawlSpider):
+
+class AnothercrawlerSpider_2021(CrawlSpider):
     name = 'anothercrawler_2021'
     allowed_domains = ['kenh14.vn']
 
