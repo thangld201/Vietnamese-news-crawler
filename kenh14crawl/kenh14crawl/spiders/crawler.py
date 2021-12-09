@@ -1,5 +1,7 @@
 import scrapy
 from bs4 import BeautifulSoup
+from datetime import datetime
+import pandas
 
 # Content crawler
 class CrawlerSpider(scrapy.Spider):
@@ -12,17 +14,20 @@ class CrawlerSpider(scrapy.Spider):
 #     with open('/content/kenh14_beta_links.txt', 'r') as f:
 #         start_urls = f.read().split("\n")
 #         start_urls.pop()
-#         start_urls = list(set(start_urls))
-
-    all_df = pd.read_csv('./12_9_kenh14.csv')
+        # start_urls = list(set(start_urls))
+    # start_urls = ['https://kenh14.vn/hot-kim-jong-kook-se-xuat-hien-tai-running-man-viet-lam-nguoi-truy-duoi-dan-cast-tai-han-quoc-20211114220622497.chn']
+    all_df = pandas.read_csv('./12_9_kenh14.csv')
     start_urls = all_df.link.tolist()
         
     def parse(self, response,**kwargs):
 
-        news_id = response.url[-21:-4]
         response_content = response.body
         soup = BeautifulSoup(response_content,"html.parser")
 
+        try:
+            news_id = response.url[-21:-4]
+        except:
+            news_id = None
         try:
             topic = soup.find("ul",{'class':'kbws-list fl'}).find_all('a')[0].text
         except:
@@ -43,7 +48,21 @@ class CrawlerSpider(scrapy.Spider):
             title = soup.find("h1",{'class':'kbwc-title'}).text.strip()
         except:
             title=None
-            
+        try:
+            news_time = soup.find("span",{'class':'kbwcm-time'}).text
+            news_time = datetime.strptime(news_time,"%H:%M %d/%m/%Y")
+        except:
+            news_time=None
+        try:
+            news_author=soup.find("span",{'class':'kbwcm-author'}).text
+        except:
+            news_author=None
+        try:
+            news_source=soup.find("span",{'class':'kbwcm-source'}).text
+        except:
+            news_source=None
+
+
         item = Kenh14Item()
         item['news_id'] = news_id
         item['topic'] = topic
@@ -51,6 +70,9 @@ class CrawlerSpider(scrapy.Spider):
         item['title'] = title
         item['sapo'] = sapo
         item['news_content'] = news_content
+        item['news_time'] = news_time
+        item['news_author'] = news_author
+        item['news_source'] = news_source
         item['url'] = response.url
         return item
 
@@ -61,4 +83,7 @@ class Kenh14Item(scrapy.Item):
     title = scrapy.Field()
     sapo = scrapy.Field()
     news_content = scrapy.Field()
-    url = scrapy.Field()
+    news_time = scrapy.Field()
+    news_author = scrapy.Field()
+    news_source = scrapy.Field()
+    url = scrapy.Field()  
