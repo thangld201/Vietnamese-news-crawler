@@ -9,13 +9,9 @@ class CrawlerSpider(scrapy.Spider):
     name = 'crawler'
     root_site = "https://kenh14.vn/"
     allowed_domains = 'kenh14.vn'
-#     custom_settings = {'CLOSESPIDER_PAGECOUNT': 5}
-
-#     with open('/content/kenh14_beta_links.txt', 'r') as f:
-#         start_urls = f.read().split("\n")
-#         start_urls.pop()
-        # start_urls = list(set(start_urls))
-    # start_urls = ['https://kenh14.vn/hot-kim-jong-kook-se-xuat-hien-tai-running-man-viet-lam-nguoi-truy-duoi-dan-cast-tai-han-quoc-20211114220622497.chn']
+    # custom_settings = {'CLOSESPIDER_PAGECOUNT': 5}
+    
+    # Puts the source links in the correct folder !
     all_df = pandas.read_csv('./12_9_kenh14.csv')
     start_urls = all_df.link.tolist()
         
