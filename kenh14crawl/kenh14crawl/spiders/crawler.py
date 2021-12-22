@@ -12,8 +12,9 @@ class CrawlerSpider(scrapy.Spider):
     # custom_settings = {'CLOSESPIDER_PAGECOUNT': 5}
     
     # Puts the source links in the correct folder !
-    all_df = pandas.read_csv('./12_9_kenh14.csv')
-    start_urls = all_df.link.tolist()
+#     all_df = pandas.read_csv('./12_9_kenh14.csv')
+#     start_urls = all_df.link.tolist()
+    start_urls = ['https://kenh14.vn/hot-kim-jong-kook-se-xuat-hien-tai-running-man-viet-lam-nguoi-truy-duoi-dan-cast-tai-han-quoc-20211114220622497.chn']
         
     def parse(self, response,**kwargs):
 
