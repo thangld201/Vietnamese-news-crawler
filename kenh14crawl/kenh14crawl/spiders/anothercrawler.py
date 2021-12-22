@@ -10,10 +10,11 @@ class AnothercrawlerSpider_2021(CrawlSpider):
     name = 'anothercrawler_2021'
     allowed_domains = ['kenh14.vn']
 
-    with open('/content/kenh14_beta_links.txt', 'r') as f:
-        start_urls = f.read().split("\n")
-        start_urls.pop()
-        start_urls = list(set(start_urls))
+#     with open('/content/kenh14_beta_links.txt', 'r') as f:
+#         start_urls = f.read().split("\n")
+#         start_urls.pop()
+#         start_urls = list(set(start_urls))
+    start_urls = ['https://kenh14.vn/hot-kim-jong-kook-se-xuat-hien-tai-running-man-viet-lam-nguoi-truy-duoi-dan-cast-tai-han-quoc-20211114220622497.chn']
 
     base_urls = 'http://kenh14.vn/'
 
