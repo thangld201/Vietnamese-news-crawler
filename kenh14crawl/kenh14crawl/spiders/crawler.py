@@ -6,7 +6,7 @@ import pandas
 # Content crawler
 class CrawlerSpider(scrapy.Spider):
 
-    name = 'crawler'
+    name = 'kenh14_content_crawler'
     root_site = "https://kenh14.vn/"
     allowed_domains = 'kenh14.vn'
     # custom_settings = {'CLOSESPIDER_PAGECOUNT': 5}
@@ -70,6 +70,7 @@ class CrawlerSpider(scrapy.Spider):
         item['news_time'] = news_time
         item['news_author'] = news_author
         item['news_source'] = news_source
+        item['homepage'] = 'kenh14'
         item['url'] = response.url
         return item
 
@@ -83,4 +84,5 @@ class Kenh14Item(scrapy.Item):
     news_time = scrapy.Field()
     news_author = scrapy.Field()
     news_source = scrapy.Field()
+    homepage = scrapy.Field()
     url = scrapy.Field()  
