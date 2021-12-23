@@ -22,6 +22,7 @@ class Kenh14Item(scrapy.Item):
     news_time = scrapy.Field()
     news_author = scrapy.Field()
     news_source = scrapy.Field()
+    homepage = scrapy.Field()
     url = scrapy.Field()  
     
 class Kenh14Link(scrapy.Item):
