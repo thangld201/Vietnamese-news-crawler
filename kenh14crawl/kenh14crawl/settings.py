@@ -19,6 +19,19 @@ NEWSPIDER_MODULE = 'kenh14crawl.spiders'
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
 
+RABBITMQ_HOST = "localhost"
+RABBITMQ_PORT = 5672
+RABBITMQ_USER = "guest"
+RABBITMQ_PASSWORD = "guest"
+RABBITMQ_VIRTUAL_HOST = "/"
+RABBITMQ_EXCHANGE = "scrapy"
+RABBITMQ_ROUTING_KEY = "kenh14_item"
+RABBITMQ_QUEUE = "kenh14_item"
+
+ITEM_PIPELINES = {
+    "scrapy_rabbitmq_publisher.pipelines.RabbitMQItemPublisherPipeline": 1,
+}
+
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
 
