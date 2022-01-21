@@ -4,7 +4,7 @@ Simple crawler utilizing Scrapy library to extract articles from Vietnamese news
 Currently support:
 * [kenh14](https://kenh14.vn/)
 * [soha](https://soha.vn/)
----
+
 ## How to run
 On the command line, navigate to the respective subfolder
 
