@@ -1,0 +1,5 @@
+scrapy==2.5.1
+bs4==4.9.0
+pandas
+requests
+lxml
